@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Length Converter</title>
+</head>
+<body>
+    <h1>Length Converter</h1>
+    <form method="POST">
+        <label>Enter value to convert: </label>
+        <input type="number" name="value" step="any" required><br><br>
+
+        <label>Convert from: </label>
+        <select name="from_unit">
+            {% for unit in units %}
+                <option value="{{ unit }}">{{ unit }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label>Convert to: </label>
+        <select name="to_unit">
+            {% for unit in units %}
+                <option value="{{ unit }}">{{ unit }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <button type="submit">Convert</button>
+    </form>
+
+    {% if result is not none %}
+        <h2>{{ value }} {{ from_unit }} = {{ result|round(2) }} {{ to_unit }}</h2>
+    {% endif %}
+</body>
+</html>
